@@ -1,10 +1,10 @@
-# Use official Python 3.10.11 image
-FROM python:3.10.11-slim
+# Use official updated Python 3.10 image (fixes the 404 apt-get error)
+FROM python:3.10-slim
 
 # Set work directory
 WORKDIR /app
 
-# Install system dependencies (if needed, can be removed if not using any OS deps)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
