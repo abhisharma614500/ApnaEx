@@ -1,12 +1,12 @@
-from flask import Flask, send_from_directory
-import os
+dimport os
+from flask import Flask
 
-app = Flask(__name__, static_folder='.')
+app = Flask(__name__)
+PORT = int(os.environ.get("PORT", 8080))
 
-@app.route('/')
-def serve_index():
-    # यह Vercel को सीधा आपकी मुख्य HTML फ़ाइल पर भेज देगा
-    return send_from_directory('.', 'index.html')
+@app.route("/")
+def home():
+    return "Hello, Render!"
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=PORT)
